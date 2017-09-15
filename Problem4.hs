@@ -1,3 +1,5 @@
+module Problem4 where
+
 import Data.List
 
 isPalindrome :: Int -> Bool

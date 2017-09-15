@@ -1,3 +1,5 @@
+module Problem5 where
+
 smallestDividibleByAll greatestDivider countTries =
   head $ flt (take countTries checkList) greatestDivider
   where

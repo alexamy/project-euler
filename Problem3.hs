@@ -1,3 +1,5 @@
+module Problem3 where
+
 isPrime :: Integer -> Bool
 isPrime 1 = True
 isPrime 2 = True
