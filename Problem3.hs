@@ -23,6 +23,3 @@ primeFactors n pCount =
 result :: Integer
 result =
   last $ primeFactors 600851475143 1000
-
--- check by
--- foldl (*) 1 result
