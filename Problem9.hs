@@ -3,21 +3,14 @@ module Problem9 where
 import Data.Fixed
 
 pythNumbers lim =
-  [ map truncate [i, j, pythNum]
-    | i <- [1 .. lim],
-      j <- [1 .. lim],
-      i < j,
-      let pythNum = eqSolve i j,
-      isSuit pythNum]
-  where
-    eqSolve a b = sqrt $ a^2 + b^2
-    isSuit a = (mod' a 1) == 0.0
+  [ map truncate [a, b, c]
+    | a <- [1 .. lim],
+      b <- [1 .. lim],
+      a < b,
+      let c = sqrt $ a^2 + b^2,
+      let isSuit i = (==) 0 $ mod' i 1,
+      isSuit c]
 
-result limit =
-  getProduct $ head $ filter filterF $ zipWith zipF pNumLists pNumSums
-  where
-    getProduct (lst, _) = foldl1 (*) lst
-    filterF = (\(_, sum) -> sum == 1000)
-    zipF pnums sum = (pnums, sum)
-    pNumSums = map sum pNumLists
-    pNumLists = pythNumbers limit
+result2 limit =
+  let numberLists = pythNumbers limit in
+  (product . concat . take 1) $ filter ((==) 1000 . sum) numberLists
