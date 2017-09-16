@@ -1,12 +1,14 @@
 module Problem3 where
 
+-- number X cant have prime factor greater or equal sqrt(X)
 isPrime :: Integer -> Bool
-isPrime 1 = True
+isPrime 1 = False
 isPrime 2 = True
 isPrime n =
   not $ any (== True) $ map isFactor $ prevNumbers
   where
-    prevNumbers = [2..(n-1)]
+    upLimit = (ceiling . sqrt . fromIntegral) n
+    prevNumbers = [2 .. upLimit]
     isFactor = (==) 0 . mod n
 
 primesList :: [Integer]
