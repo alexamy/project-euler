@@ -1,7 +1,7 @@
 module Problem8 where
 
 import Data.Char
-import DataValues
+import DataValues (numberString_pr8)
 
 numberString = DataValues.numberString_pr8
 substrings = sublists
