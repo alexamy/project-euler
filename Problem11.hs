@@ -32,13 +32,13 @@ elemAtMatrix matrix (row, col)
 
 adjacentElements :: Matrix -> (Int, Int) -> (Int, Int) -> Int -> [Integer]
 adjacentElements matrix (elemRow, elemCol) (incrRow, incrCol) count =
-  [elemAtMatrix matrix (r, c) |  i <- [0 .. count-1],
-                              let r = elemRow + i * incrRow,
-                              let c = elemCol + i * incrCol]
+  [elemAtMatrix matrix (r, c) | i <- [0 .. count-1],
+                                let r = elemRow + i * incrRow,
+                                let c = elemCol + i * incrCol]
 
 productOfAdj :: Matrix -> (Int, Int) -> Int -> [Integer]
 productOfAdj matrix (incrRow, incrCol) count =
-  [product $ adj |  row <- [1 .. rowsNumber],
+  [product $ adj  | row <- [1 .. rowsNumber],
                     col <- [1 .. colsNumber],
                     let adj = adjacentElements matrix (row, col) (incrRow, incrCol) count]
   where
