@@ -1,9 +1,8 @@
 module Problem8 where
 
 import Data.Char
-import DataValues (numberString_pr8)
+import Problem8Data (numberString)
 
-numberString = DataValues.numberString_pr8
 substrings = sublists
 
 sublists list trunkLen =

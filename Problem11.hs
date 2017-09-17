@@ -1,8 +1,6 @@
 module Problem11 where
 
-import DataValues (numberGrid_pr10)
-
-numberGrid = numberGrid_pr10
+import Problem11Data (numberGrid)
 
 type Matrix = [[Integer]]
 -- find greatest product of 4 adjacent numbers (up, down, left, right, vertical)
