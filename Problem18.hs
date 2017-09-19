@@ -31,9 +31,17 @@ findMaximumSumPath :: [[Integer]] -> Integer
 findMaximumSumPath triangle =
   findMaximumSumPath' triangle 0
 
-sumAllSubtriangles :: Int -> [[Integer]] -> [[Integer]]
-sumAllSubtriangles depth triangle =
-  [[ (sum . concat) $ subtriangle d r triangle | r <- [0..d] ]  | d <- [0..depth-1]]
+sumAllSubtriangles :: [[Integer]] -> [[Integer]]
+sumAllSubtriangles triangle =
+  let depth = length triangle
+  in [[ (sum . concat) $ subtriangle d r triangle | r <- [0..d] ]  | d <- [0..depth-1]]
 
+result :: Integer
 result =
   findMaximumSumPath numberTriangle
+
+triangleTuples :: [[Integer]] -> [[(Integer, Integer)]]
+triangleTuples triangle =
+  let len = length triangle
+      sums = sumAllSubtriangles triangle
+  in  [ zip (triangle !! r) (sums !! r) | r <- [0..len-1] ]
