@@ -1,11 +1,11 @@
 USING: kernel combinators math namespaces arrays assocs
        io io.files io.encodings.utf8
        sequences splitting sorting prettyprint ;
-IN: project-euler.problem22
+IN: factor.problem22
 
 SYMBOL: path
 : set-path ( -- )
-  "C:\\Users\\Alex\\Desktop\\project-euler\\problem22\\names_p22.txt"
+  "C:\\Users\\Alex\\Desktop\\project-euler\\factor\\problem22\\problem22_names.txt"
   path set ;
 
 : read-file ( -- s )
