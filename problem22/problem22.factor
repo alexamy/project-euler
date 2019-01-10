@@ -1,11 +1,11 @@
-USING: kernel combinators math namespaces
+USING: kernel combinators math namespaces arrays assocs
        io io.files io.encodings.utf8
        sequences splitting sorting prettyprint ;
 IN: project-euler.problem22
 
 SYMBOL: path
 : set-path ( -- )
-  "C:\\Users\\Alex\\Desktop\\project-euler\\problem22\\names.txt"
+  "C:\\Users\\Alex\\Desktop\\project-euler\\problem22\\names_p22.txt"
   path set ;
 
 : read-file ( -- s )
@@ -19,10 +19,19 @@ SYMBOL: path
 
 : get-names ( s -- seq )
   "," split
-  [ remove-quotes ] map
-  natural-sort ;
+  [ remove-quotes ] map ;
+
+: name-score ( s -- n )
+  >array [ 64 - ] map sum ;
+
+: zip-index-1 ( seq -- seq )
+  { f } swap append zip-index 1 tail ;
+
+: get-scores ( seq -- seq )
+  [ name-score ] map zip-index-1 [ product ] map ;
 
 : problem-run ( -- )
-  set-path read-file get-names . ;
+  set-path read-file get-names natural-sort
+  get-scores sum . ;
 
 MAIN: problem-run
